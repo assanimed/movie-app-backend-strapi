@@ -148,7 +148,9 @@ module.exports = (plugin) => {
       typeof ctx.request.body === "string"
         ? JSON.parse(ctx.request.body)
         : ctx.request.body;
+
     const refreshCookie = ctx.cookies.get("refreshToken");
+    console.log("Refresh Token -> ", refreshCookie);
 
     if (!refreshCookie && !refreshToken) {
       return ctx.badRequest("No Authorization");
@@ -199,7 +201,7 @@ module.exports = (plugin) => {
   };
 
   plugin.routes["content-api"].routes.push({
-    method: "POST",
+    method: "GET",
     path: "/token/refresh",
     handler: "auth.refreshToken",
     config: {

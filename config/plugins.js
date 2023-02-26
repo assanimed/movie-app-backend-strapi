@@ -1,6 +1,14 @@
 // path: ./config/plugins.js
 
 module.exports = ({ env }) => ({
+  "users-permissions": {
+    enabled: true,
+    config: {
+      jwt: {
+        expiresIn: "5m", // 5 ~ 60 // -> set to 1min
+      },
+    },
+  },
   upload: {
     config: {
       breakpoints: {
